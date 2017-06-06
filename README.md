@@ -12,8 +12,10 @@ Dropwizard -
     default value since everything else is an input that the user defines. 
       - The configuration class reads the parameters from the YAML file via 
       magic. 
-      - Just kidding, it is handled by Jackson. 
--CalculatorApplication: The application class pulls together the different bundles and starts the application. 
+      - Just kidding, it is handled by Jackson.
+    -CalculatorApplication: The application class pulls together the different bundles and starts the application. 
+
+
       -Hello run method. 
     -Calculation: This is our representation class. It specifies the parameters 
     of our object and what it does. 
