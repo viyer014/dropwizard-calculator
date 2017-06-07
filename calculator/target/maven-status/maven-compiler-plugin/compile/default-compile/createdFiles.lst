@@ -1,0 +1,7 @@
+com/viyer/calculator/CalculatorApplication.class
+com/viyer/calculator/CalculatorModule.class
+com/viyer/calculator/resources/CalculatorResource.class
+com/viyer/calculator/Calculate.class
+com/viyer/calculator/CalculatorService.class
+com/viyer/calculator/CalculatorConfiguration.class
+com/viyer/calculator/representation/Calculation.class

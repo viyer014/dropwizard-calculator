@@ -1,4 +1,6 @@
 package com.viyer.calculator;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.viyer.calculator.resources.CalculatorResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -21,9 +23,10 @@ public class CalculatorApplication extends Application<CalculatorConfiguration> 
     @Override
     public void run(CalculatorConfiguration configuration,
                     Environment environment) {
-        Injector inject = Guice.createInjector(new CalculatorModule());
-        CalculatorResource resource = new CalculatorResource();
-        // nothing to do yet
+        //CalculatorResource oldWay = new CalculatorResource(new CalculatorService(configuration));
+        Injector injector = Guice.createInjector(new CalculatorModule(configuration));
+        CalculatorResource resource = injector.getInstance(CalculatorResource.class);
+
         environment.jersey().register(resource);
     }
 }

@@ -1,0 +1,1 @@
+web: java -Xmx1G -jar target/calculator-1.0-SNAPSHOT.jar server calculator.yml

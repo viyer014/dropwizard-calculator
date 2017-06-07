@@ -1,5 +1,6 @@
 package com.viyer.calculator.resources;
 
+import com.google.inject.Inject;
 import com.viyer.calculator.CalculatorService;
 import com.viyer.calculator.representation.Calculation;
 
@@ -14,49 +15,21 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class CalculatorResource {
 
-    public CalculatorResource() {
+    CalculatorService calculator;
 
-    }
-
-    /*
-    @GET
-    @Timed
-    public Calculation decideService(@QueryParam("operation") String operation, @QueryParam("a") Double a, @QueryParam("b") Double b) {
-        switch (operation) {
-            case("add"):
-                AdditionService addValues = new AdditionService();
-                return addValues.calculate(a, b);
-            case("subtract"):
-
-                SubtractionService subtractValues = new SubtractionService();
-                return subtractValues.calculate(a, b);
-
-            case("multiply"):
-                MultiplicationService multiplyValues = new MultiplicationService();
-                return multiplyValues.calculate(a, b);
-
-            case("divide"):
-                DivisionService divideValues = new DivisionService();
-                return divideValues.calculate(a, b);
-
-            default: throw new IllegalArgumentException("Operation requested is unavailable");
-
-
-        }
-
-    }
-    */
-
-    CalculatorService calculator = new CalculatorService();
 
     @Inject
+    public CalculatorResource(CalculatorService calculator) {
+        this.calculator = calculator;
+    }
+
+
     @GET
     @Path("/add")
     public Calculation addValues(@QueryParam("a") Double a, @QueryParam("b") Double b) {
         return new Calculation("add", a, b, calculator.calculate("add", a, b));
     }
 
-    @Inject
     @GET
     @Path("/subtract")
     public Calculation subValues(@QueryParam("a") Double a, @QueryParam("b") Double b) {

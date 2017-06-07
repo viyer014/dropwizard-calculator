@@ -1,5 +1,6 @@
 package com.viyer.calculator;
 
+import com.google.inject.Inject;
 import io.dropwizard.Configuration;
 
 import javax.annotation.Nullable;
@@ -8,10 +9,12 @@ import javax.annotation.Nullable;
  * Created by vidya.iyer on 5/26/17.
  */
 public class CalculatorService implements Calculate{
-    private CalculatorConfiguration config;
 
-    public CalculatorService() {
-        config = new CalculatorConfiguration();
+    CalculatorConfiguration config;
+
+    @Inject
+    public CalculatorService(CalculatorConfiguration config) {
+        this.config = config;
     }
 
     @Nullable
